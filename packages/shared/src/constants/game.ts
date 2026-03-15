@@ -1,0 +1,48 @@
+export const BOARD_WIDTH = 60;
+export const BOARD_HEIGHT = 40;
+export const MAX_GENERATIONS = 500;
+export const SETUP_TIMEOUT_SECONDS = 120;
+export const MAX_INITIAL_CELLS = 50;
+export const MIN_ENTRY_FEE_WEI = '0';
+export const DEFAULT_ENTRY_FEE_WEI = '10000000000000000'; // 0.01 ETH
+export const SIMULATION_TICK_INTERVAL_MS = 100; // 100ms per generation
+export const SIMULATION_MIN_INTERVAL_MS = 50;
+export const SIMULATION_MAX_INTERVAL_MS = 1000;
+
+// Player zones: player1 gets top half, player2 gets bottom half
+export const PLAYER1_ZONE_START_ROW = 0;
+export const PLAYER1_ZONE_END_ROW = Math.floor(BOARD_HEIGHT / 2) - 1; // 0-19
+export const PLAYER2_ZONE_START_ROW = Math.floor(BOARD_HEIGHT / 2); // 20
+export const PLAYER2_ZONE_END_ROW = BOARD_HEIGHT - 1; // 39
+
+export const ZONE_MARGIN_ROWS = 2; // Buffer rows between zones that neither player can use initially
+
+export const COLORS = {
+  PLAYER1: '#3b82f6', // blue-500
+  PLAYER2: '#ef4444', // red-500
+  DEAD: '#111827',    // gray-900
+  GRID: '#1f2937',    // gray-800
+  ZONE1_OVERLAY: 'rgba(59, 130, 246, 0.08)',
+  ZONE2_OVERLAY: 'rgba(239, 68, 68, 0.08)',
+} as const;
+
+export const ERROR_CODES = {
+  MATCH_NOT_FOUND: 'MATCH_NOT_FOUND',
+  MATCH_FULL: 'MATCH_FULL',
+  MATCH_WRONG_PHASE: 'MATCH_WRONG_PHASE',
+  PLAYER_NOT_IN_MATCH: 'PLAYER_NOT_IN_MATCH',
+  INVALID_PLACEMENT: 'INVALID_PLACEMENT',
+  INVALID_AGENT: 'INVALID_AGENT',
+  INVALID_PATTERN: 'INVALID_PATTERN',
+  PATTERN_NOT_ALLOWED: 'PATTERN_NOT_ALLOWED',
+  PLACEMENT_OUT_OF_BOUNDS: 'PLACEMENT_OUT_OF_BOUNDS',
+  PLACEMENT_OUTSIDE_ZONE: 'PLACEMENT_OUTSIDE_ZONE',
+  PLACEMENT_OVERLAPS: 'PLACEMENT_OVERLAPS',
+  CELL_LIMIT_EXCEEDED: 'CELL_LIMIT_EXCEEDED',
+  UNAUTHORIZED: 'UNAUTHORIZED',
+  INTERNAL_ERROR: 'INTERNAL_ERROR',
+  AGENT_NOT_SELECTED: 'AGENT_NOT_SELECTED',
+  ALREADY_READY: 'ALREADY_READY',
+} as const;
+
+export type ErrorCode = typeof ERROR_CODES[keyof typeof ERROR_CODES];
